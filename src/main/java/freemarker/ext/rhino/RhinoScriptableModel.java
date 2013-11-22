@@ -47,6 +47,8 @@ TemplateBooleanModel, TemplateNumberModel
         if(retval instanceof Function) {
             return new RhinoFunctionModel((Function)retval, scriptable, wrapper);
         }
+        else if (RhinoDateModel.isRhinoDate(retval))
+            return new RhinoDateModel((ScriptableObject)retval);
         else {
             return wrapper.wrap(retval);
         }
